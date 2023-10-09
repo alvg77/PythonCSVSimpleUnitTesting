@@ -26,6 +26,9 @@ class CSVParser:
 
     def min_max_avg(self, column_name):
         values = []
+
+        assert values == [], "Values should be empty in the beginning"
+
         for row in self.data:
             try:
                 value = float(row[column_name])
@@ -33,21 +36,23 @@ class CSVParser:
             except ValueError:
                 pass
         
-        assert values, f"No values found in column {column_name}"
-        
-        minimum = min(values)
-        maximum = max(values)
-        average = statistics.mean(values)
-        return minimum, maximum, average
+        if values:
+            minimum = min(values)
+            maximum = max(values)
+            average = statistics.mean(values)
+            return minimum, maximum, average
+        else:
+            return None, None, None
 
     def shortest_longest_string(self, column_name):
         strings = [row[column_name] for row in self.data if column_name in row]
         
-        assert strings, f"No strings found in column {column_name}"
-
-        shortest = min(strings, key=len)
-        longest = max(strings, key=len)
-        return shortest, longest
+        if strings:
+            shortest = min(strings, key=len)
+            longest = max(strings, key=len)
+            return shortest, longest
+        else:
+            return None, None
 
 
 if __name__ == "__main__":
