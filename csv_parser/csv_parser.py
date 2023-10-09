@@ -33,22 +33,22 @@ class CSVParser:
             except ValueError:
                 pass
         
-        if values:
-            minimum = min(values)
-            maximum = max(values)
-            average = statistics.mean(values)
-            return minimum, maximum, average
-        else:
-            return None, None, None
+        assert values, f"No values found in column {column_name}"
+        
+        minimum = min(values)
+        maximum = max(values)
+        average = statistics.mean(values)
+        return minimum, maximum, average
 
     def shortest_longest_string(self, column_name):
         strings = [row[column_name] for row in self.data if column_name in row]
-        if strings:
-            shortest = min(strings, key=len)
-            longest = max(strings, key=len)
-            return shortest, longest
-        else:
-            return None, None
+        
+        assert strings, f"No strings found in column {column_name}"
+
+        shortest = min(strings, key=len)
+        longest = max(strings, key=len)
+        return shortest, longest
+
 
 if __name__ == "__main__":
     file_path = "sample.csv"  # Replace with the path to your CSV file
