@@ -36,23 +36,26 @@ class CSVParser:
             except ValueError:
                 pass
         
-        if values:
-            minimum = min(values)
-            maximum = max(values)
-            average = statistics.mean(values)
-            return minimum, maximum, average
-        else:
-            return None, None, None
+        minimum = min(values)
+        maximum = max(values)
+        average = statistics.mean(values)
+
+        assert maximum != None, "Maximum should not be None"
+        assert minimum != None, "Minimum should not be None"
+        assert average != None, "Average should not be None"
+
+        return minimum, maximum, average
 
     def shortest_longest_string(self, column_name):
         strings = [row[column_name] for row in self.data if column_name in row]
         
-        if strings:
-            shortest = min(strings, key=len)
-            longest = max(strings, key=len)
-            return shortest, longest
-        else:
-            return None, None
+        shortest = min(strings, key=len)
+        longest = max(strings, key=len)
+
+        assert shortest != None, "Shortest should not be None"
+        assert longest != None, "Longest should not be None"
+
+        return shortest, longest
 
 
 if __name__ == "__main__":
