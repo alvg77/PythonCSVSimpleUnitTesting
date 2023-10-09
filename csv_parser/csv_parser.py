@@ -58,23 +58,23 @@ class CSVParser:
         return shortest, longest
 
 
-if __name__ == "__main__":
-    file_path = "sample.csv"  # Replace with the path to your CSV file
-    parser = CSVParser(file_path)
+# if __name__ == "__main__":
+#     file_path = "sample.csv"  # Replace with the path to your CSV file
+#     parser = CSVParser(file_path)
     
-    num_rows = parser.get_num_rows()
-    print(f"Line count: {num_rows}")
+#     num_rows = parser.get_num_rows()
+#     print(f"Line count: {num_rows}")
     
-    column_name = "Grade"  # Replace with the name of the column you want statistics for
+#     column_name = "Grade"  # Replace with the name of the column you want statistics for
     
-    total_sum = parser.sum_column(column_name)
-    print(f"Sum {column_name}: {total_sum}")
+#     total_sum = parser.sum_column(column_name)
+#     print(f"Sum {column_name}: {total_sum}")
     
-    min_val, max_val, avg_val = parser.min_max_avg(column_name)
-    print(f"Min {column_name}: {min_val}")
-    print(f"Max {column_name}: {max_val}")
-    print(f"Average {column_name}: {avg_val}")
+#     min_val, max_val, avg_val = parser.min_max_avg(column_name)
+#     print(f"Min {column_name}: {min_val}")
+#     print(f"Max {column_name}: {max_val}")
+#     print(f"Average {column_name}: {avg_val}")
     
-    shortest_str, longest_str = parser.shortest_longest_string(column_name)
-    print(f"Shortest {column_name}: {shortest_str}")
-    print(f"Longest {column_name}: {longest_str}")
+#     shortest_str, longest_str = parser.shortest_longest_string(column_name)
+#     print(f"Shortest {column_name}: {shortest_str}")
+#     print(f"Longest {column_name}: {longest_str}")
