@@ -1,16 +1,15 @@
 import csv
 import statistics
 
-class CSVParser:
-    def __init__(self, file_path):
-        self.file_path = file_path
-        self.data = self.parse_csv()
+def parse_csv(file_path):
+    with open(file_path, 'r', newline='') as csvfile:
+        csvreader = csv.DictReader(csvfile)
+        data = list(csvreader)
+    return data
 
-    def parse_csv(self):
-        with open(self.file_path, 'r', newline='') as csvfile:
-            csvreader = csv.DictReader(csvfile)
-            data = list(csvreader)
-        return data
+class CSVParser:
+    def __init__(self, data):
+        self.data = data
 
     def get_num_rows(self):
         return len(self.data)
