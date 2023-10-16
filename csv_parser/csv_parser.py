@@ -2,6 +2,8 @@ import csv
 import statistics
 
 def parse_csv(file_path):
+    if not file_path.endswith('.csv'):
+        raise csv.Error("File is not a CSV file")
     with open(file_path, 'r', newline='') as csvfile:
         csvreader = csv.DictReader(csvfile)
         data = list(csvreader)

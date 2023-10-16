@@ -10,6 +10,7 @@ Space Invaders,30,3.8
 @pytest.fixture
 def mock_open_csv(mocker):
     mocker.patch('builtins.open', mocker.mock_open(read_data=CSV_CONTENT))
+    mocker.side_effect = csv.Error("File is not a CSV file")
 
 def test_parse_csv_with_fixture(mocker, mock_open_csv):
     data = parse_csv('fake_file_path.csv')
@@ -19,8 +20,16 @@ def test_parse_csv_with_fixture(mocker, mock_open_csv):
         {'Videogame': 'Pong', 'Price': '25', 'Playtime': '4.5'},
         {'Videogame': 'Space Invaders', 'Price': '30', 'Playtime': '3.8'}
     ]
+
     assert data == expected_data
 
+
+def test_parse_csv_throws_exception_with_fixture(mocker, mock_open_csv):
+    with pytest.raises(Exception) as e:
+        parse_csv('dudu')
+
+        assert e.type == csv.Error
+        assert "File is not a CSV file" in str(e.value)
 
 @pytest.fixture
 def csv_parser(mocker, mock_open_csv):
