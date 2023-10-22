@@ -22,6 +22,15 @@ def test_parse_csv_with_fixture(mocker, mock_open_csv):
 
     assert data == expected_data
 
+def test_parse_csv_throws_exception_without_fixture(mocker):
+    mocker.side_effect = csv.Error("File is not a CSV file")
+    
+    with pytest.raises(csv.Error) as e:
+        data = parse_csv('fake_file_path')
+
+    assert "File is not a CSV file" in str(e.value)
+    
+
 def test_parse_csv_throws_exception_with_fixture():
     with pytest.raises(Exception) as e:
         parse_csv('dudu')
