@@ -1,0 +1,6 @@
+************* Module csv_parser.csv_parser
+csv_parser.py:8:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+
+------------------------------------------------------------------
+Your code has been rated at 9.78/10 (previous run: 9.78/10, +0.00)
+
