@@ -56,19 +56,19 @@ def test_min_max_avg_throws_value_error(csv_parser):
     assert e.type == ValueError
     assert "Value is not a number" in str(e.value)
 
-def test_get_num_rows(csv_parser):
-    assert csv_parser.get_num_rows() == 2
+def test_get_num_rows(csv_parser, benchmark):
+    assert benchmark(csv_parser.get_num_rows) == 2
 
-def test_sum_column(csv_parser):
-    assert csv_parser.sum_column("Price") == 55
+def test_sum_column(csv_parser, benchmark):
+    assert benchmark(csv_parser.sum_column, "Price") == 55
 
-def test_min_max_avg(csv_parser):
-    minimum, maximum, average = csv_parser.min_max_avg("Playtime")
+def test_min_max_avg(csv_parser, benchmark):
+    minimum, maximum, average = benchmark(csv_parser.min_max_avg, "Playtime")
     assert minimum == 3.8
     assert maximum == 4.5
     assert average == 4.15
 
-def test_shortest_longest_string(csv_parser):
-    shortest, longest = csv_parser.shortest_longest_string("Videogame")
+def test_shortest_longest_string(csv_parser, benchmark):
+    shortest, longest = benchmark(csv_parser.shortest_longest_string, "Videogame")
     assert shortest == "Pong"
     assert longest == "Space Invaders"

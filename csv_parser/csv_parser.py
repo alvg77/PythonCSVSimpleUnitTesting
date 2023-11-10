@@ -28,7 +28,7 @@ class CSVParser:
     def min_max_avg(self, column_name):
         values = []
 
-        assert values == [], "Values should be empty in the beginning"
+        assert not values, "Values should be empty in the beginning"
 
         for row in self.data:
             try:
@@ -41,9 +41,9 @@ class CSVParser:
         maximum = max(values)
         average = statistics.mean(values)
 
-        assert maximum != None, "Maximum should not be None"
-        assert minimum != None, "Minimum should not be None"
-        assert average != None, "Average should not be None"
+        assert maximum is not None, "Maximum should not be None"
+        assert minimum is not None, "Minimum should not be None"
+        assert average is not None, "Average should not be None"
 
         return minimum, maximum, average
 
@@ -53,7 +53,7 @@ class CSVParser:
         shortest = min(strings, key=len)
         longest = max(strings, key=len)
 
-        assert shortest != None, "Shortest should not be None"
-        assert longest != None, "Longest should not be None"
+        assert shortest is not None, "Shortest should not be None"
+        assert longest is not None, "Longest should not be None"
 
         return shortest, longest
