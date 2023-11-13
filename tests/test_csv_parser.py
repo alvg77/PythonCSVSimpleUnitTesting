@@ -56,6 +56,12 @@ def test_min_max_avg_throws_value_error(csv_parser):
     assert e.type == ValueError
     assert "Value is not a number" in str(e.value)
 
+def test_parse_csv(mocker, mock_open_csv, benchmark):
+    assert benchmark(parse_csv, 'fake_file_path.csv') == [
+        {'Videogame': 'Pong', 'Price': '25', 'Playtime': '4.5'},
+        {'Videogame': 'Space Invaders', 'Price': '30', 'Playtime': '3.8'}
+    ]
+
 def test_get_num_rows(csv_parser, benchmark):
     assert benchmark(csv_parser.get_num_rows) == 2
 
