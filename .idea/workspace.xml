@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eae51f5c-020e-4027-bf87-b21c86445f7c" name="Changes" comment="" />
+    <list default="true" id="eae51f5c-020e-4027-bf87-b21c86445f7c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv_parser/csv_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/csv_parser/csv_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv_parser/data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_csv_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_csv_parser.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +42,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python tests.pytest for test_csv_parser.test_parse_csv_throws_exception">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\sylse\Python\Soft_eng\CSVparser\csv_parser" />
+    </key>
+  </component>
+  <component name="RunManager">
     <configuration name="pytest for test_csv_parser.test_parse_csv_throws_exception" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="CSVparser" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -91,6 +101,8 @@
       <workItem from="1697456044924" duration="148000" />
       <workItem from="1697456207538" duration="2213000" />
       <workItem from="1697463142816" duration="1107000" />
+      <workItem from="1699887372618" duration="1497000" />
+      <workItem from="1700490380057" duration="1595000" />
     </task>
     <servers />
   </component>

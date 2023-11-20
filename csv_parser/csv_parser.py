@@ -1,5 +1,7 @@
 import csv
 import statistics
+import cProfile
+
 
 def parse_csv(file_path):
     if not file_path.endswith('.csv'):
@@ -8,6 +10,7 @@ def parse_csv(file_path):
         csvreader = csv.DictReader(csvfile)
         data = list(csvreader)
     return data
+
 
 class CSVParser:
     def __init__(self, data):
@@ -36,7 +39,7 @@ class CSVParser:
                 values.append(value)
             except ValueError:
                 raise ValueError("Value is not a number")
-        
+
         minimum = min(values)
         maximum = max(values)
         average = statistics.mean(values)
@@ -49,7 +52,7 @@ class CSVParser:
 
     def shortest_longest_string(self, column_name):
         strings = [row[column_name] for row in self.data if column_name in row]
-        
+
         shortest = min(strings, key=len)
         longest = max(strings, key=len)
 
@@ -57,3 +60,12 @@ class CSVParser:
         assert longest is not None, "Longest should not be None"
 
         return shortest, longest
+
+
+if __name__ == "__main__":
+    data = parse_csv('data.csv')
+    csv_parser = CSVParser(data)
+    cProfile.run('csv_parser.get_num_rows()')
+    cProfile.run('csv_parser.sum_column("Price")')
+    cProfile.run('csv_parser.min_max_avg("Playtime")')
+    cProfile.run('csv_parser.shortest_longest_string("Videogame")')

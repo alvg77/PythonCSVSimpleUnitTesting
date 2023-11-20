@@ -1,6 +1,7 @@
 import pytest
 import csv
 from csv_parser.csv_parser import CSVParser, parse_csv
+import cProfile
 
 CSV_CONTENT = """Videogame,Price,Playtime
 Pong,25,4.5
@@ -24,12 +25,12 @@ def test_parse_csv_with_fixture(mocker, mock_open_csv):
 
 def test_parse_csv_throws_exception_without_fixture(mocker):
     mocker.side_effect = csv.Error("File is not a CSV file")
-    
+
     with pytest.raises(csv.Error) as e:
         data = parse_csv('fake_file_path')
 
     assert "File is not a CSV file" in str(e.value)
-    
+
 
 def test_parse_csv_throws_exception_with_fixture():
     with pytest.raises(Exception) as e:
@@ -72,3 +73,16 @@ def test_shortest_longest_string(csv_parser, benchmark):
     shortest, longest = benchmark(csv_parser.shortest_longest_string, "Videogame")
     assert shortest == "Pong"
     assert longest == "Space Invaders"
+
+def run_tests_with_profiling():
+    profiler = cProfile.Profile()
+    profiler.enable()
+
+    # Run pytest programmatically
+    pytest.main(['-q', 'test_my_code.py'])
+
+    profiler.disable()
+    profiler.dump_stats('tests.prof')
+
+if __name__ == 'main':
+    run_tests_with_profiling()
