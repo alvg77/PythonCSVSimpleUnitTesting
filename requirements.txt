@@ -13,3 +13,4 @@ pytest==7.4.2
 pytest-mock==3.11.1
 virtualenv==20.24.5
 pytest-benchmark
+cprofilev
